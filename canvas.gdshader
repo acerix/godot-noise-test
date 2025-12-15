@@ -12,10 +12,12 @@ void fragment() {
 	vec2 CD = 2.0 * UV - vec2(1.0);
 	// flip Y so up is positive
 	CD.y = -CD.y;
-	// scale to fit screen and equalize X/Y resolution
+	// scale to fit unit circle to screen and equalize X/Y resolution
 	CD *= SCREEN_PIXEL_SIZE.yx / min(SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y);
 
-	COLOR.r = dot(CD, CD);
-	COLOR.b = noise(CD, sin(TIME));
-	COLOR.g = noise(CD, TIME);
+	float t = TAU * TIME + 64.0;
+
+	COLOR.r = (1.5 + sin(t/3.0)) + noise(CD, t * 101.0);
+	COLOR.b = dot(CD, CD);
+	COLOR.g = (1.5 + sin(t/7.0)) * noise(CD.yx, t * 103.0);
 }
