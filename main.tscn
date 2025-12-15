@@ -5,6 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ig7tw"]
 shader = ExtResource("1_ig7tw")
+shader_parameter/randf = 0.0
 
 [node name="Main" type="Control"]
 layout_mode = 3
